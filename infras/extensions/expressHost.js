@@ -175,7 +175,10 @@ class ExpressHost {
         // set default errorHandle
         this.#app.use((error, req, res, next) => {
             //error handle
-            res.status(500).json('Error Handle: Server Error')
+            if (error.code) {
+                return res.status(error.code).json(error.message);
+            }
+            return res.status(500).json('Error Handle: Server Error')
         })
 
         // set port

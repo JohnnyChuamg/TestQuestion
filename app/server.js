@@ -1,6 +1,7 @@
 const fs = require('fs');
 const pathHelper = require('path');
 const express = require('express');
+require('express-async-errors');
 const host = new (require('../infras/extensions/expressHost'))('api',console);
 // host.configuration('./configs');
 host.configuration(pathHelper.join(__dirname,'internal','configs'))

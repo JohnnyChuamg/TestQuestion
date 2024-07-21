@@ -1,7 +1,6 @@
 const express = require('express')
 const PolicyService = require('../services/policyholder');
 const PolicyRepository = require('../repositories/policyholder');
-
 const router = express.Router();
 
 router.all('*',async(req,res,next)=> {
@@ -23,9 +22,11 @@ router.get('/:code',async(req,res,next)=> {
     } else if (isNaN(id) || id === 0) {
         return res.status(400).json('code should be a number and greater than 0')
     }
-
     const result = await req.services.policyService.getPolicyholderIncludeSubtree(id);
 
+    if (!result) {
+        return res.status(404).json('the resource is not found')
+    }
     return res.status(200).json(result)
 })
 
@@ -37,6 +38,10 @@ router.get(`/:code/top`,async(req,res,next)=> {
         return res.status(400).json('code should be a number and greater than 0')
     }
     const result = await req.services.policyService.getIntroducerIncludeSubtree(id);
+
+    if (!result) {
+        return res.status(404).json('the resource is not found')
+    }
     return res.status(200).json(result)
 })
 
