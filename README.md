@@ -23,3 +23,20 @@
 - 4. 原搜尋的保戶「主節點」以不同顏色區別
 - 5. 每個子節點以不同顏色區別「直接介紹」& 「間接介紹」客戶
 - 6. 每個子節點點擊後，會以該結點為「主節點」再呈現 4 階的介紹關係
+
+.
+|-- app
+|    |-- routes API端口
+|    |-- services 商業邏輯層
+|    |-- repositories 倉儲層
+|    |-- views   顯示層
+|    |-- public  client端使用的js與css
+|    |__ servers 服務建立口
+|-- docs
+|    |__ database Mysql5.7
+|         |-- data      測試資料
+|         |-- functions sql 函式
+|         |__ tables    table schema
+|-- .env 環境變數檔
+|__ app.js process startup
+
